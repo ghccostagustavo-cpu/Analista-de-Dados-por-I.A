@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Medidas de segurança para evitar o upload de arquivos sensíveis ou desnecessários para o repositório.
 
 .env
@@ -19,4 +20,27 @@ __pycache__/
 .vscode/
 .idea/
 
+=======
+#Medidas de segurança para evitar o upload de arquivos sensíveis ou desnecessários para o repositório.
+
+.env
+*.db
+loguerys.txt
+
+*.db
+*.sqlite
+*.sqlite3
+
+*.xlsx
+*.xls
+*.csv
+~$*.xlsx
+
+*.txt
+*.log
+__pycache__/
+.vscode/
+.idea/
+
+>>>>>>> c64471c3692fc21f546eb6ccbc2b6bf8ca29e11e
 log_integracao_auto.txt

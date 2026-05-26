@@ -9,4 +9,4 @@ Observações quanto ao uso de inteligência artificial: A IA foi usada nesse pr
 
 Dúvidas ou sugestões=> LinkedIn: linkedin.com/in/gustavo-costa-comp/ ou no contato do github mesmo.
 
-Obs.: O script em python está em outro repositório por ter sido feito com propósito de necessidade na minha companhia. Aqui é o mesmo script, porém em um repositório separado para uma parte mais pessoal.
+Obs.: O script em python está em outro repositório por ter sido feito com propósito de necessidade na minha companhia. Aqui é o mesmo script, porém em um repositório separado para uma parte mais pessoal.# Analista-de-Dados-de-IA
