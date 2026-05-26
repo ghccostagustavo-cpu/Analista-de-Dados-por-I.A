@@ -1,0 +1,22 @@
+#Medidas de segurança para evitar o upload de arquivos sensíveis ou desnecessários para o repositório.
+
+.env
+*.db
+loguerys.txt
+
+*.db
+*.sqlite
+*.sqlite3
+
+*.xlsx
+*.xls
+*.csv
+~$*.xlsx
+
+*.txt
+*.log
+__pycache__/
+.vscode/
+.idea/
+
+log_integracao_auto.txt
