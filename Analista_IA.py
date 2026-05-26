@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import pandas as pd
 import sqlite3
 from openai import OpenAI
@@ -100,5 +99,4 @@ df_qry = pd.read_sql_query(f"{resposta}", conexao)
 print(df_qry.to_markdown(index=False, tablefmt="grid"))
 
 #Fecha a conexão com o banco de dados
->>>>>>> c64471c3692fc21f546eb6ccbc2b6bf8ca29e11e
 conexao.close()
