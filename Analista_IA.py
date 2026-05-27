@@ -47,5 +47,8 @@ df_qry = pd.read_sql_query(f"{resposta}", conexao)
 #Printa a query formatada no terminal
 print(df_qry.to_markdown(index=False, tablefmt="grid"))
 
+#Caso queira printar a tabela sem formatação:
+# print(df_qry)
+
 #Fecha a conexão com o banco de dados
 conexao.close()
