@@ -2,7 +2,7 @@ OBSERVAÇÕES QUANTO À FIDELIDADE DOS DADOS: Modifiquei caminhos e nomes de arq
 
 Softwares utilizados: VSCode, DBeaver (cliente SQLite/PostgreSQL), Ollama OpenAI.
 
-Adicionei o script "Analista_Automatico_git". Esse script é, na minha opinião, muito bacana pro projeto e pra qualquer outro. (O menor e mais legal, diga-se de passagem). Ele é o que o nome diz, um analista de dados de I.A. Um conversor de linguagem natural pra SQL! O usuário vai digitar uma consulta desejada em linguagem natural, a I.A vai interpretar, transformar em SQL, executar o comando SQL (com as necessárias barreiras para a segurança, instruí a IA a não aceitar comandos que alterem, modifiquem ou excluam qualquer dado). Temporariamente, os dados serão exibidos no terminal. Ainda trabalhando pra exibir isso de uma forma mais visual e amigável (convenhamos, o terminal não é).
+Ele é o que o nome diz, um analista de dados de I.A. Um conversor de linguagem natural pra SQL! O usuário vai digitar uma consulta desejada em linguagem natural, a I.A vai interpretar, transformar em SQL, executar o comando SQL (com as necessárias barreiras para a segurança, instruí a IA a não aceitar comandos que alterem, modifiquem ou excluam qualquer dado). Temporariamente, os dados serão exibidos no terminal. Ainda trabalhando pra exibir isso de uma forma mais visual e amigável (convenhamos, o terminal não é). O script está para operar bancos de dados sqlite
 
 
 Observações quanto ao uso de inteligência artificial: A IA foi usada nesse projeto na parte de otimização de alguns códigos, correções eventuais, algumas revisões e na sugestão de algumas funcionalidades.
