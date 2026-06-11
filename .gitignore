@@ -1,0 +1,23 @@
+# Ambientes virtuais
+venv/
+.venv/
+env/
+
+# Arquivos de configuração e segredos
+.env
+*.env
+
+# Caches do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Arquivos do sistema operacional ou IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Logs e arquivos temporários
+loguerys.txt
