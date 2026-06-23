@@ -1,65 +1,101 @@
 # Analista IA — Text-to-SQL com LLM Local
 
-Script de conversão de linguagem natural para SQL utilizando LLM local via Ollama. O usuário descreve a consulta desejada em português e o modelo interpreta, gera o comando SQL correspondente e executa diretamente no banco de dados.
+Script de conversão de linguagem natural para SQL utilizando LLM local via Ollama. O usuário descreve a consulta desejada em português e o modelo interpreta, gera o comando SQL correspondente e executa diretamente no banco de dados. A interface visual é construída com Streamlit.
 
 ## Como funciona
 
-O script recebe uma pergunta em linguagem natural, monta um prompt com as instruções e o envia para o modelo via API REST local (Ollama). O modelo retorna o SQL gerado, que é validado e executado no banco. O resultado é exibido no terminal formatado via Pandas.
+O script recebe uma pergunta em linguagem natural via interface Streamlit, monta um prompt com as instruções e o envia para o modelo via API REST local (Ollama). O modelo retorna o SQL gerado, que é validado e executado no banco. O resultado é exibido na interface formatado via Pandas DataFrame.
 
 ## Segurança
 
 O modelo é instruído via system prompt a aceitar apenas comandos `SELECT`. Qualquer tentativa de executar `INSERT`, `UPDATE`, `DELETE`, `DROP` ou similares é bloqueada antes da execução. Todas as interações são registradas em log com timestamp para auditoria.
 
-## Dependências
+## Versões
 
+### PostgreSQL (versão atual)
+
+Utiliza SQLAlchemy com o driver `psycopg2` para conexão com banco PostgreSQL. As credenciais são carregadas via `.env`.
+
+**Dependências:**
+
+```
 openai
-
 pandas
-
-sqlite3 (nativo)
-
 sqlalchemy
+psycopg2-binary
+streamlit
+python-dotenv
+```
 
-tabulate
+**Configuração — arquivo `.env`:**
 
+```env
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=nome_do_banco
+DB_USER=usuario
+DB_PASSWORD=senha
+OLLAMA_API_KEY=ollama
+caminho_log=caminho/do/log.txt
+```
 
-## Configuração
+**Execução:**
 
-Defina as credenciais de conexão/diretórios no início do script:
+```bash
+streamlit run Analista_IA.py
+```
+
+---
+
+### SQLite (versão anterior)
+
+Utiliza `sqlite3` nativo para conexão com banco local. Os caminhos são definidos diretamente no script.
+
+**Dependências:**
+
+```
+openai
+pandas
+sqlite3 (nativo)
+streamlit
+```
+
+**Configuração — início do script:**
 
 ```python
-DB_HOST     = "localhost"
-DB_PORT     = 5432
-DB_NAME     = "nome_do_banco"
-DB_USER     = "usuario"
-DB_PASSWORD = "senha"
-caminho_log = r"caminho/do/log.txt"
-caminho_banco = r"caminho_sqlite.db"
+caminho_banco = r"caminho/do/banco.db"
+caminho_log   = r"caminho/do/log.txt"
 ```
 
-O Ollama deve estar instalado e rodando localmente com o modelo `llama3.2:8b`:
+**Execução:**
 
 ```bash
-ollama serve
-ollama pull llama3.2:8b
+streamlit run Analista_IA.py
 ```
 
-## Execução
-
-```bash
-python streamlit run Analista_IA_Postgre.py
-pyhton streamlit run Analista_IA.py #no caso do sqlite
-```
+---
 
 ## Stack
 
-| Componente      | Tecnologia                                      |
-|-----------------|-------------------------------------------------|
-| LLM             | Llama 3.2 8B via Ollama                         |
-| Comunicação     | API REST local (OpenAI SDK → `localhost:11434`) |
-| Banco de dados  | SQLite e PostgreSQL                             |
-| Processamento   | Pandas                                          |
+| Componente     | PostgreSQL                                      | SQLite                        |
+|----------------|-------------------------------------------------|-------------------------------|
+| LLM            | Llama 3.2 8B via Ollama                         | Llama 3.2 3B via Ollama       |
+| Comunicação    | API REST local (OpenAI SDK → `localhost:11434`) | API REST local (OpenAI SDK → `localhost:11434`) |
+| Banco de dados | PostgreSQL via SQLAlchemy + psycopg2            | SQLite nativo                 |
+| Processamento  | Pandas                                          | Pandas                        |
+| Interface      | Streamlit                                       | Streamlit                     |
+| Configuração   | `.env` via python-dotenv                        | Variáveis no script           |
+
+## Pré-requisitos
+
+O Ollama deve estar instalado e rodando localmente:
+
+```bash
+ollama serve
+ollama pull llama3.2:8b   # versão PostgreSQL
+ollama pull llama3.2:3b   # versão SQLite
+```
 
 ## Observações
 
-Processamento 100% local, nenhum dado trafega para servidores externos. Interface visual via Streamlit em desenvolvimento.
+Processamento 100% local — nenhum dado trafega para servidores externos.
